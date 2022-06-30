@@ -1,0 +1,53 @@
+.landing-page .content {
+    display: flex;
+    color: var(--white);
+    padding: var(--contentPadding);
+}
+
+.hero {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    
+    text-align: center;
+    color: var(--white);
+    overflow: hidden;
+}
+
+.landing-page {
+    width: 100%;
+    height: 90vh;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    text-align: center;
+    margin-left: auto;
+    font-size: 24px;
+    
+    background-color: black; 
+    background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url('../../../../res/hero2.jpg') ;
+    transform: translateX(30px);
+    
+    padding-left: 10px;
+    margin-left: -30px;
+    padding-top: 10px;
+    margin-bottom: -100px;
+
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+
+    overflow: hidden;
+}
+
+.landing-page>.hero {
+    display:flex;
+}
+
+.hero h1 {
+    font-size: 48px;
+}
+
+.hero h2 {
+}

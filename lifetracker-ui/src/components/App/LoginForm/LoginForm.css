@@ -1,0 +1,9 @@
+.form-footer {
+    /* margin-top: 20px; */
+    display:flex;
+    justify-content: center;
+}
+
+#goto-register {
+    margin:0;
+}

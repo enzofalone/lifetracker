@@ -1,0 +1,33 @@
+.navbar {
+    display: flex;
+    flex-direction: row;
+
+    height: fit-content;
+    background-color: none;
+    color: white;
+
+    justify-content: center;
+
+    /* padding-top: 20px; */
+}
+
+.navbar .content {
+    display:flex;
+    justify-content: space-between;
+    align-items: center;
+} 
+
+.logo {
+    width:50px;
+    height:50px;
+}
+
+.logo>img {
+    width: 50px;
+    /* transform: translateY(1px); */
+}
+
+.navbar>*{
+    margin: 0;
+}
+

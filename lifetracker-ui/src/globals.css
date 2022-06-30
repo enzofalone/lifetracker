@@ -1,3 +1,13 @@
+:root {
+  --maxWidth: 1300px;
+
+  --contentPadding: 40px;
+
+  /* colors */
+  --white: white;
+  --buttonBlue: #24a0ed;
+}
+
 body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell",
@@ -8,4 +18,83 @@ body {
 
 * {
   box-sizing: border-box;
+}
+
+.app {
+  background-color: black;
+}
+
+.content {
+  max-width: 100%;
+  margin: auto;
+  width: var(--maxWidth);
+}
+
+/* form pages */
+.form {
+  width: 50vw;
+
+  display:flex;
+  flex-direction: column;
+  justify-content: center;
+
+  border: solid white 1px;
+  border-radius: 20px;
+  
+  color:var(--white);
+  text-align: center;
+
+  padding: 50px 100px;
+  margin: 15vh auto;
+}
+
+.form>*{
+  margin:0;
+}
+
+.form>input {
+  margin-top: 32px;
+  font-size: 24px;
+
+  background:none;
+  color: var(--white);
+  border-top: none;
+  border-left: none;
+  border-right: none;
+  border-bottom: 2px solid var(--white);
+  outline: 0;
+}
+
+.form>input:focus {
+  border-bottom: 2px solid var(--buttonBlue);
+}
+
+.form>input::placeholder {
+  color: rgb(146, 146, 146);
+}
+
+.form-button {
+  width: 200px;
+  height: 50px;
+
+  margin-top: 32px;
+  
+  margin: 32px auto 0 auto;
+  
+  font-size: 24px;
+
+  border-radius: 5px;
+  border: none;
+
+  color:white;
+  background-color: var(--buttonBlue);
+}
+
+.form-button:active {
+  filter: brightness(80%);
+}
+
+.form-button:hover { 
+  transform: translateY(2px);
+  cursor:pointer;
 }

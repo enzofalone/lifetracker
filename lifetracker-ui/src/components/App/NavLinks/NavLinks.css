@@ -1,0 +1,23 @@
+.nav-links>* {
+    margin-left: 20px;
+    color: var(--white);
+    font-size: 18px;
+    text-decoration: none;
+}
+
+.nav-links .button-filled {
+    background-color: var(--buttonBlue);
+    padding: 7px;
+    border-radius: 5px;
+    margin-left: 20px;
+}
+
+.button-filled:hover {
+    transform: translateY(5px);
+    color: var(--white);
+}
+
+.nav-links .button-filled:active {
+    transform: 'translateY(5px)';
+    text-decoration: none;
+}
