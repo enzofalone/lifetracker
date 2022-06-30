@@ -21,17 +21,10 @@ export default function App() {
     password: '',
     passwordConfirm: ''
   }
-
+  // useState hooks
   const [registerForm, setRegisterForm] = React.useState(registerFormInit);
   const [isLoggedIn, setLoggedIn] = React.useState(false);
   const [errorMessage, setErrorMessage] = React.useState();
-
-  const notLoggedInHandler = () => {
-    setErrorMessage("You must be logged in to access that page");
-    return (
-      <Navigate to='/login' />
-    )
-  }
 
   return (
     <div className="app">

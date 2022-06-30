@@ -2,8 +2,10 @@ import './LoginForm.css'
 
 import * as React from 'react';
 import { Link } from 'react-router-dom';
+import AuthContext from '../../../contexts/AuthProvider';
 
 export default function LoginForm(props) {
+    
 
     const loginFormInit = {
         email: '',
