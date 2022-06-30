@@ -68,7 +68,7 @@ class User {
                 first_name,
                 last_name
             )
-            VALUES ($1,$2,$3,$4,$5,$6)
+            VALUES ($1,$2,$3,$4)
             RETURNING id, email, first_name, last_name;`,
             [lowercasedEmail, hashedPassword, credentials.firstName, credentials.lastName]);
 
