@@ -4,6 +4,9 @@ require('colors');
 //select default port in .env or use 3001 (development port)
 const PORT = process.env.PORT ? Number(process.env.PORT) : 3001;
 
+//get secret key in .env
+const SECRET_KEY = process.env.SECRET_KEY;
+
 function getDatabaseUri() {
     const dbUser = process.env.DATABASE_USER || 'postgres'
     const dbPass = process.env.DATABASE_PASS ? encodeURI(process.env.DATABASE_PASS) : 'postgres';
@@ -20,6 +23,7 @@ const BCRYPT_WORK_FACTOR = 10;
 
 console.log("App Config".red)
 console.log("PORT:".blue, PORT)
+console.log("SECRET_KEY:".blue, SECRET_KEY);
 console.log("Database URI:".blue, getDatabaseUri())
 console.log("---")
 
