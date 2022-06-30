@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 
 import './NavLinks.css'
 
@@ -7,11 +7,11 @@ export default function NavLinks() {
 
     return (
         <div className='nav-links'>
-            <Link to='/activity'>Activity</Link>
-            <Link to='/nutrition'>Nutrition</Link>
+            <NavLink to='/activity'>Activity</NavLink>
+            <NavLink to='/nutrition'>Nutrition</NavLink>
             
-            {(isLoggedIn === false ? <Link to='/login' className="button-filled">Login</Link> : <Link to='/'>Logout</Link>)}
-            {(isLoggedIn === false ? <Link to='/register' className="button-filled">Register</Link> : null)}
+            {(isLoggedIn === false ? <NavLink to='/login' className="button-filled">Login</NavLink> : <NavLink to='/'>Logout</NavLink>)}
+            {(isLoggedIn === false ? <NavLink to='/register' className="button-filled">Register</NavLink> : null)}
             
         </div>
     )

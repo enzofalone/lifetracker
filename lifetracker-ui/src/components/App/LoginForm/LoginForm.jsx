@@ -3,7 +3,7 @@ import './LoginForm.css'
 import * as React from 'react';
 import { Link } from 'react-router-dom';
 
-export default function LoginForm() {
+export default function LoginForm(props) {
 
     const loginFormInit = {
         email: '',
@@ -27,6 +27,7 @@ export default function LoginForm() {
     return (
         <div className="login-form form">
             <h1>Login</h1>
+            <p style={{color: 'red'}}>{props?.errorMessage}</p>
             <input name='email' placeholder='John@Doe.io' value={loginForm.email} onChange={onFormChange} required type='email' />
             <input name='password' placeholder='Password' value={loginForm.password} onChange={onFormChange} required type='password' />
 
