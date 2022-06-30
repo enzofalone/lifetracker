@@ -4,12 +4,12 @@ import logo from "../../../../res/codepath_logo.svg"
 import './Navbar.css'
 
 
-export default function Navbar() {
+export default function Navbar(props) {
     return (
         <div className="navbar">
             <div className="content">
                 <Link className="logo" to='/'><img src={logo} ></img></Link>
-                <NavLinks />
+                <NavLinks auth={props.auth} handleOnLogout={props.handleOnLogout} />
             </div>
         </div>
     )

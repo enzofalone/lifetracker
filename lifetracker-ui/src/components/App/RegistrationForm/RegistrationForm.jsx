@@ -2,7 +2,7 @@ import './RegistrationForm.css';
 import * as React from 'react';
 import { Link } from 'react-router-dom';
 
-export default function RegistrationForm() {
+export default function RegistrationForm(props) {
     const registrationFormInit = {
         email: '',
         username: '',
@@ -19,11 +19,11 @@ export default function RegistrationForm() {
             ...prevForm,
             [event.target.name]: event.target.value
         }));
-        
     }
 
     return (
         <div className="registration-form form">
+            {auth.loggedIn && (<Navigate to="/activity" replace={true}/>)}
             <h1>Register</h1>
             <input name='email' placeholder='Email' value={registrationForm.email} onChange={onFormChange} required type='email' />
             <input name='username' placeholder='Username' value={registrationForm.username} onChange={onFormChange} required type='text' />
@@ -31,7 +31,7 @@ export default function RegistrationForm() {
             <input name='lastName' placeholder='Last Name' value={registrationForm.lastName} onChange={onFormChange} required type='text' />
             <input name='password' placeholder='Password' value={registrationForm.password} onChange={onFormChange} required type='password' />
             <input name='passwordConfirm' placeholder='Confirm Password' value={registrationForm.passwordConfirm} onChange={onFormChange} required type='password' />
-            <button className='submit-registration form-button'>Create Account</button>
+            <button onClick={(e) => props.handleOnSubmit(registrationForm)} className='submit-registration form-button'>Create Account</button>
             <p>Already an user? <Link to='/login'>Log In</Link></p>
         </div>
     )

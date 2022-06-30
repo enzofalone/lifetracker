@@ -2,11 +2,14 @@ import * as React from 'react';
 
 const AuthContext = React.createContext({});
 
-export default function AuthProvider({ children }) {
+export const AuthProvider = ({ children }) => {
     const [auth, setAuth] = React.useState({});
+
     return (
         <AuthContext.Provider value={{auth, setAuth}}>
             {children}
         </AuthContext.Provider>
     )
 }
+
+export default AuthContext;
