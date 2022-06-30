@@ -1,8 +1,14 @@
-.nav-links>* {
+.nav-link {
     margin-left: 20px;
     color: var(--white);
     font-size: 18px;
     text-decoration: none;
+    font-weight: 800;
+    letter-spacing: 1.2px;
+}
+
+.nav-link {
+
 }
 
 .button-filled {
@@ -12,11 +18,11 @@
     margin-left: 20px;
 }
 
-.button-filled:hover {
-    transform: translateY(5px);
+.nav-link:hover {
+    transform: translateY(2px);
 }
 
-.nav-links .button-filled:active {
-    transform: 'translateY(5px)';
-    text-decoration: none;
+.nav-links {
+    display:flex;
+    align-items: center;
 }

@@ -24,5 +24,6 @@ const validateToken = (token) => {
 
 module.exports = {
     generateToken,
-    validateToken
+    validateToken,
+    createUserJwt
 }

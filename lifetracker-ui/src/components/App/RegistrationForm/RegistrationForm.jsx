@@ -23,7 +23,7 @@ export default function RegistrationForm(props) {
 
     return (
         <div className="registration-form form">
-            {auth.loggedIn && (<Navigate to="/activity" replace={true}/>)}
+            {props.auth.loggedIn && (<Navigate to="/activity" replace={true}/>)}
             <h1>Register</h1>
             <input name='email' placeholder='Email' value={registrationForm.email} onChange={onFormChange} required type='email' />
             <input name='username' placeholder='Username' value={registrationForm.username} onChange={onFormChange} required type='text' />

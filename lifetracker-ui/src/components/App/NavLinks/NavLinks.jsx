@@ -7,14 +7,28 @@ export default function NavLinks(props) {
     const handleOnClickLogout = () => {
         props.handleOnLogout();
     }
-    console.log(props?.auth);
+
     return (
         <div className='nav-links'>
-            <NavLink to='/activity'>Activity</NavLink>
-            <NavLink to='/nutrition'>Nutrition</NavLink>
+            <NavLink className=
+                        {isActive => 'nav-link' + (!isActive ? ' unselected' : '')} to='/activity'>Activity</NavLink>
+            <NavLink className=
+                        {isActive => 'nav-link' + (!isActive ? ' unselected' : '')} to='/nutrition'>Nutrition</NavLink>
             
-            {(!props?.auth?.loggedIn ? <NavLink to='/login' className="button-filled">Login</NavLink> : <NavLink to='/' onClick={(e) => handleOnClickLogout()}>Logout</NavLink>)}
-            {(!props?.auth?.loggedIn ? <NavLink to='/register' className="button-filled">Register</NavLink> : null)}
+            {(!props?.auth?.loggedIn ? 
+                <NavLink 
+                    className=
+                        {isActive => 'nav-link' + (!isActive ? ' unselected' : '')} to='/login'>Login</NavLink>
+                : <NavLink to='/' className=
+                        {isActive => 'nav-link button-filled' + (!isActive ? ' unselected' : '')} 
+                        onClick={(e) => handleOnClickLogout()}>
+                            Logout
+                        </NavLink>)}
+            {(!props?.auth?.loggedIn ? 
+                <NavLink className={isActive => 'nav-link button-filled' + (!isActive ? ' unselected' : '')} 
+                to='/register'>
+                    Sign Up
+                </NavLink> : null)}
             
         </div>
     )

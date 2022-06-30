@@ -9,6 +9,13 @@ export default function LandingPage() {
                 <h1>Life Tracker</h1>
                 <h2>please go work out</h2>
             </div>
+            <div className="hero-footer">
+                <div className='hero-footer-element'>
+                    {/* <span>Fitness</span> TODO */}
+                    
+                </div>
+
+            </div>
 
         </div>
     )

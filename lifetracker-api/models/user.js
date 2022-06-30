@@ -3,8 +3,10 @@ const {
     UnauthorizedError
 } = require('../utils/errors');
 const db = require('../db');
+//encryption of data (passwords)
 const bcrypt = require('bcrypt');
 const {BCRYPT_WORK_FACTOR} = require('../config');
+
 
 class User {
     static async makePublicUser(user) {
