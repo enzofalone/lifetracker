@@ -14,7 +14,10 @@ export default function NavLinks(props) {
                         {isActive => 'nav-link' + (!isActive ? ' unselected' : '')} to='/activity'>Activity</NavLink>
             <NavLink className=
                         {isActive => 'nav-link' + (!isActive ? ' unselected' : '')} to='/nutrition'>Nutrition</NavLink>
-            
+            <NavLink className=
+                        {isActive => 'nav-link' + (!isActive ? ' unselected' : '')} to='/exercise'>Exercise</NavLink>
+
+
             {(!props?.auth?.loggedIn ? 
                 <NavLink 
                     className=

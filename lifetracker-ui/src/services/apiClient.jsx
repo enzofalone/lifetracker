@@ -20,7 +20,7 @@ class ApiClient {
     async request({ endpoint, method = `GET`, data = {} }) {
         const url = `${this.remoteHostUrl}/${endpoint}`
 
-        const headers = {"Accept":"application/json, text/plain, /","Content-Type": "application/json"}
+        const headers = {"Content-Type": "application/json"}
 
         if (this.token) {
             headers["Authorization"] = `Bearer ${this.token}`;
@@ -28,6 +28,7 @@ class ApiClient {
 
         try {
             const res = await axios({ url, method, data, headers })
+
             return { data: res.data, error: null }
         } catch (error) {
             console.error({ errorResponse: error.response });
@@ -42,11 +43,20 @@ class ApiClient {
     }
 
     async signupUser(credentials) {
+        console.log(credentials);
         return await this.request({endpoint: `auth/register`, method: `POST`, data: credentials})
     }
 
     async fetchUserFromToken() {
         return await this.request({endpoint: `auth/me`, method: `GET`})
+    }
+
+    async createNutrition(credentials) {
+        return await this.request({endpoint: `nutrition/create`, method: `POST`, data: credentials})
+    }
+
+    async fetchNutrition() {
+        return await this.request({endpoint: `nutrition/`, method: `GET`})
     }
 
 }

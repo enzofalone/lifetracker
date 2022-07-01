@@ -29,6 +29,7 @@ export default function LoginForm(props) {
         if(error) props.setErrorMessage(error);
         if (data?.user) {
             setAuth({ ...data, loggedIn: true });
+            console.log('login form token received:' , data.token);
             apiClient.setToken(data.token)
         }
     }

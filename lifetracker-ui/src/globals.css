@@ -58,6 +58,7 @@ body {
   margin: 10vh auto;
 
   background-color: rgba(0, 0, 0, 0.6);
+  filter: drop-shadow(0 0 0.2rem black);
 }
 
 .form>* {
@@ -102,6 +103,8 @@ body {
   background-color: var(--buttonBlue);
 }
 
+
+
 .form-button:active {
   filter: brightness(80%);
 }
@@ -109,4 +112,30 @@ body {
 .form-button:hover {
   transform: translateY(2px);
   cursor: pointer;
+}
+
+.record-button {
+  display:flex;
+  justify-content: center;
+  align-items: center;
+  width: 150px;
+  height: 50px;
+  font-weight: 600;
+  color:var(--white);
+  margin: 0 0 0 10px;
+  font-size: 18px;
+  overflow: hidden;
+  text-decoration: none;
+  border-radius: 5px;
+  filter: drop-shadow(0 0 0.3rem black);
+}
+
+.record-button:hover {
+  transform: translateY(2px);
+  cursor: pointer;
+  color: var(--white);
+}
+
+.record-button:active {
+  filter: brightness(80%);
 }

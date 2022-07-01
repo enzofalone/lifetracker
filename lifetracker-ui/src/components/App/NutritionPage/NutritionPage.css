@@ -1,0 +1,12 @@
+.activity-nutrition {
+    display:flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.stat-container {
+    width: 300px;
+    height: 350px;
+    background-color: blue;
+}
+
