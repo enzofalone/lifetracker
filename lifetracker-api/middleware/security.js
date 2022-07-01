@@ -2,7 +2,7 @@ const jwt = require('jsonwebtoken');
 const {SECRET_KEY} = require('../config');
 const {UnauthorizedError} = require('../utils/errors');
 
-// function that exctracts the JWT from the request header
+// function that exctracts the JWT from the request header (splits prefix and actual token)
 const jwtFrom = ({headers}) => {
     if(headers?.authorization) {
         const [scheme, token] = headers.authorization.split(" ");

@@ -14,10 +14,12 @@ class User {
         return {
             id: user.id,
             email: user.email,
+            password: user.password,
             firstName: user.first_name,
             lastName: user.last_name,
         }
     }
+
     //login function
     static async login(credentials) {
         const requiredFields = ['email', 'password'];
@@ -29,15 +31,23 @@ class User {
         const user = await User.fetchUserByEmail(credentials.email);
 
         if(user) {
+            console.log("credentials.password",credentials.password);
+            console.log("user.password", user.password);
             const isValid = await bcrypt.compare(credentials.password, user.password);
             if(isValid) {
                 return this.makePublicUser(user);
+            } else {
+                console.log("invalid");
             }
         }
 
         throw new UnauthorizedError("Invalid email/password combo");
     }
 
+    // register function
+    // checks validity of fields
+    // and creates a new entry in db
+    // returning at the end
     static async register(credentials) {
         const requiredFields = ['email', 'password', 'firstName', 'lastName'];
         requiredFields.forEach(field => {
@@ -45,6 +55,7 @@ class User {
                 throw new BadRequestError(`Missing ${field}!`)
             }
         })
+
         //check for @ symbol to ensure it is an email
         if(credentials.email.indexOf("@") <= 0) {
             throw new BadRequestError("Email is not valid:", credentials.email);
@@ -88,7 +99,7 @@ class User {
         const result = await db.query(query, [email.toLowerCase()]);
 
         const user = result.rows[0];
-        return user
+        return this.makePublicUser(user)
     }
 }
 

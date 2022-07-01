@@ -5,6 +5,7 @@ const { NotFoundError } = require('./utils/errors');
 const { PORT } = require('./config');
 const authRoutes = require('./routes/auth');
 const security = require('./middleware/security');
+const nutritionRoutes = require('./routes/nutrition')
 
 const app = express()
 
@@ -19,6 +20,9 @@ app.use(morgan('tiny'));
 
 //check if a token exists in the auth header, if it does, attach the decoded user to res.locals
 app.use(security.extractUserFromJwt);
+
+// set up routes for nutrition section
+app.use('/nutrition', nutritionRoutes)
 
 // set up routes for auth/app functionality
 app.use('/auth', authRoutes);
