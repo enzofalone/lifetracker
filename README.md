@@ -44,15 +44,15 @@ Implement any of the following features to improve the application:
 
 * Did the topics discussed in your labs prepare you to complete the assignment? Be specific, which features in your weekly assignment did you feel unprepared to complete?
 
-[Add your response here]
+Lab 1 was definitely a good start for SQL which I later used to select the data required to fulfill the features I had to implement. However, middleware security and the use of useContext was not taught in this week, which was a roadblock in the way for me in this project as I had to comprehend well the concepts in order to keep implementing more features in the Lifetracker application. Nevertheless, I was able to find several resources online in order to keep learning as I will be doing in the long term and was able to implement the required features for this week (week 4)
 
 * If you had more time, what would you have done differently? Would you have added additional features? Changed the way your project responded to a particular event, etc.
   
-[Add your response here]
+I would have finished the nutritions page as the backend was fully prepared for everything. I would have done all the stretch features as it is really interesting how can I manipulate data and get interesting statistics in the Activity page which is not implemented yet
 
 * Reflect on your project demo, what went well? Were there things that maybe didn't go as planned? Did you notice something that your peer did that you would like to try next time?
 
-[Add your response here]
+I was able to work faster after going through new and hard concepts that I was not letting go of the back of my head until I completely understood what was happening. But a lot of learning and time management occurred in my pod and my work itself. I am happy for this week as I really put a lot of effort and tried to take breaks accordingly to how exhausted I was feeling, which increased my productivity and my rate of learning, but I was stressed as some problems within my backend are harder to track than any order errors in the frontend.
 
 ### Open-source libraries used
 
@@ -62,7 +62,7 @@ Implement any of the following features to improve the application:
 
 Give a shout out to somebody from your cohort that especially helped you during your project. This can be a fellow peer, instructor, TA, mentor, etc.
 
-[Add your response here]
+I would shout out my podmates as we were working together to tackle every single feature we were together, finding resources for each other and not letting anybody behind
 
 ## Overview
 
