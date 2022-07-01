@@ -7,7 +7,7 @@ export default function LandingPage() {
         <div className="landing-page">
             <div className="hero">
                 <h1>Life Tracker</h1>
-                <h2>please go work out</h2>
+                <h2>please go work out and log it here</h2>
             </div>
             <div className="hero-footer">
                 <div className='hero-footer-element'>

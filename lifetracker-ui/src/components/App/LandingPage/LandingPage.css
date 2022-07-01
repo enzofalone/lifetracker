@@ -24,19 +24,12 @@
     margin-left: auto;
     font-size: 24px;
     
-    background-color: black; 
-    background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url('../../../../res/hero2.jpg') ;
     transform: translateX(30px);
     
     padding-left: 10px;
     margin-left: -30px;
     padding-top: 10px;
     margin-bottom: -100px;
-
-    background-attachment: fixed;
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
 
     overflow: hidden;
 }

@@ -5,8 +5,7 @@
     align-items: center;
 
     margin-top: 5vh;
-    margin-left: 10vw;
-    margin-right: 10vw;
+    margin-bottom: 5vh;
 }
 
 .headline>section {
@@ -29,5 +28,17 @@
 .headline>section>h1{
     font-weight: 1000;
     color: var(--white)
+}
+
+.activity-body {
+    display:flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.stat-container {
+    width: 300px;
+    height: 250px;
+    background-color: blue;
 }
 

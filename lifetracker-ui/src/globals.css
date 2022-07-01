@@ -1,10 +1,10 @@
 :root {
-  --maxWidth: 1300px;
+  --maxWidth: 1200px;
 
   --contentPadding: 40px;
 
   /* colors */
-  --white: white;
+  --white: rgb(220, 220, 220);
   --buttonBlue: #24a0ed;
 }
 
@@ -22,41 +22,53 @@ body {
 
 .app {
   background-color: black;
+  background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url('../../../../res/hero2.jpg');
+
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-color: black;
 }
 
 .content {
-  max-width: 100%;
+  width: 100%;
   margin: auto;
-  width: var(--maxWidth);
+  max-width: var(--maxWidth);
 }
 
 /* form pages */
 .form {
-  width: 50vw;
+  max-width: 40vw;
+  height: fit-content;
+  max-height: fit-content;
 
-  display:flex;
+  display: flex;
   flex-direction: column;
   justify-content: center;
+  flex-wrap: wrap;
 
-  border: solid white 1px;
+  border: solid var(--white) 2px;
   border-radius: 20px;
-  
-  color:var(--white);
+
+  color: var(--white);
   text-align: center;
 
   padding: 50px 100px;
-  margin: 15vh auto;
+  margin: 10vh auto;
+
+  background-color: rgba(0, 0, 0, 0.6);
 }
 
-.form>*{
-  margin:0;
+.form>* {
+  margin: 0;
 }
 
 .form>input {
   margin-top: 32px;
   font-size: 24px;
 
-  background:none;
+  background: none;
   color: var(--white);
   border-top: none;
   border-left: none;
@@ -78,15 +90,15 @@ body {
   height: 50px;
 
   margin-top: 32px;
-  
-  margin: 32px auto 0 auto;
-  
+
+  margin: 32px auto 10px auto;
+
   font-size: 24px;
 
   border-radius: 5px;
   border: none;
 
-  color:white;
+  color: white;
   background-color: var(--buttonBlue);
 }
 
@@ -94,7 +106,7 @@ body {
   filter: brightness(80%);
 }
 
-.form-button:hover { 
+.form-button:hover {
   transform: translateY(2px);
-  cursor:pointer;
+  cursor: pointer;
 }
