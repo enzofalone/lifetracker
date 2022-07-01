@@ -3,6 +3,7 @@ import './LoginForm.css'
 import * as React from 'react';
 import { Link, Navigate } from 'react-router-dom';
 import AuthContext from '../../../contexts/AuthProvider';
+import apiClient from '../../../services/apiClient'
 
 export default function LoginForm(props) {
     // AuthContext
@@ -23,6 +24,15 @@ export default function LoginForm(props) {
         props.setErrorMessage();
     }
 
+    const handleOnSubmit = async () => {
+        const {data, error} = await apiClient.loginUser(loginForm);
+        if(error) props.setErrorMessage(error);
+        if (data?.user) {
+            setAuth({ ...data, loggedIn: true });
+            apiClient.setToken(data.token)
+        }
+    }
+
     return (
         
         <div className="login-form form">
@@ -32,7 +42,7 @@ export default function LoginForm(props) {
             <input name='email' placeholder='John@Doe.io' value={loginForm.email} onChange={onFormChange} required type='email' />
             <input name='password' placeholder='Password' value={loginForm.password} onChange={onFormChange} required type='password' />
 
-            <button onClick={(e) => props.handleOnSubmit(loginForm)} className='submit-login form-button'>Login</button>
+            <button onClick={(e) => handleOnSubmit()} className='submit-login form-button'>Login</button>
             <p>New to LifeTracker? <Link to='/register'>Sign Up</Link></p>
 
         </div>

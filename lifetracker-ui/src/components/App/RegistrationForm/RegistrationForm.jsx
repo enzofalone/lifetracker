@@ -1,6 +1,9 @@
 import './RegistrationForm.css';
 import * as React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, Navigate } from 'react-router-dom';
+
+import AuthContext from '../../../contexts/AuthProvider';
+import apiClient from '../../../services/apiClient'
 
 export default function RegistrationForm(props) {
     const registrationFormInit = {
@@ -13,6 +16,7 @@ export default function RegistrationForm(props) {
     }
 
     const [registrationForm, setRegistrationForm] = React.useState(registrationFormInit);
+    const { auth, setAuth } = React.useContext(AuthContext);
 
     const onFormChange = (event) => {
         setRegistrationForm((prevForm) => ({
@@ -23,13 +27,22 @@ export default function RegistrationForm(props) {
         props.setErrorMessage();
     }
 
+    const handleOnSubmit = async () => {
+        const { data, error } = await apiClient.signupUser(registrationForm);
+        if (error) props.setErrorMessage(error)
+        if (data?.user) {
+            setAuth({ ...data, loggedIn: true });
+            apiClient.setToken(data.token)
+        }
+    }
+
     return (
         <div className="registration-form form">
             {/* check if user is logged in */}
-            {props.auth.loggedIn && (<Navigate to="/activity" replace={true}/>)}
+            {auth.loggedIn && (<Navigate to="/activity" replace={true}/>)}
             <h1>Register</h1>
             {/* error message if axios requests catch an error */}
-            <p style={{color: 'red'}}>{props?.errorMessage}</p>
+            <p style={{ color: 'red' }}>{props?.errorMessage}</p>
             {/* form fields */}
             <input name='email' placeholder='Email' value={registrationForm.email} onChange={onFormChange} required type='email' />
             <input name='username' placeholder='Username' value={registrationForm.username} onChange={onFormChange} required type='text' />
@@ -38,7 +51,7 @@ export default function RegistrationForm(props) {
             <input name='password' placeholder='Password' value={registrationForm.password} onChange={onFormChange} required type='password' />
             <input name='passwordConfirm' placeholder='Confirm Password' value={registrationForm.passwordConfirm} onChange={onFormChange} required type='password' />
             {/* submit button */}
-            <button onClick={(e) => props.handleOnSubmit(registrationForm)} className='submit-registration form-button'>Create Account</button>
+            <button onClick={(e) => handleOnSubmit()} className='submit-registration form-button'>Create Account</button>
             {/* redirect button to /login */}
             <p>Already an user? <Link to='/login'>Log In</Link></p>
         </div>
