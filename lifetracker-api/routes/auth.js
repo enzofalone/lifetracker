@@ -5,12 +5,16 @@ const router = express.Router();
 const security = require('../middleware/security');
 const {createUserJwt} = require('../utils/tokens');
 
+
+
+
 router.post('/login', async (req, res, next) => {
     try {
         //take user email and password to log in into app
         const user = await User.login(req.body);
         //create user token
         const token = createUserJwt(user);
+
         return res.status(200).json({
             user, token
         });
@@ -34,12 +38,16 @@ router.post('/register', async (req, res, next) => {
     }
 })
 
-// router.get('/me', security.requireAuthenticatedUser, async(req,res,next) => {
-//     try{
-//         const {email} = res.locals.user;
-//     }catch(error){
-//         next(error)
-//     }
-// })
+//debug
+router.get('/me', security.requireAuthenticatedUser, async(req, res, next) => {
+    try{
+        const {email} = res.locals.user;
+        const user = await User.fetchUserByEmail(email);
+        const publicUser = User.makePublicUser(user);
+        return res.status(200).json({user: user})
+    }catch(error){
+        next(error)
+    }
+})
 
 module.exports = router;

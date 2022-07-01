@@ -9,6 +9,7 @@ const {BCRYPT_WORK_FACTOR} = require('../config');
 
 
 class User {
+    // handle data from database that will be returned to the server
     static async makePublicUser(user) {
         return {
             id: user.id,
@@ -17,7 +18,7 @@ class User {
             lastName: user.last_name,
         }
     }
-
+    //login function
     static async login(credentials) {
         const requiredFields = ['email', 'password'];
         requiredFields.forEach(field => {
@@ -44,7 +45,7 @@ class User {
                 throw new BadRequestError(`Missing ${field}!`)
             }
         })
-
+        //check for @ symbol to ensure it is an email
         if(credentials.email.indexOf("@") <= 0) {
             throw new BadRequestError("Email is not valid:", credentials.email);
         }
@@ -81,7 +82,7 @@ class User {
     }
 
     static async fetchUserByEmail(email) {
-        if (!email) throw new BadRequestError("Missing email: fetchUserByEmail");
+        if (!email) throw new BadRequestError("Missing email!");
 
         const query = `SELECT * FROM users WHERE email = $1`
         const result = await db.query(query, [email.toLowerCase()]);

@@ -17,18 +17,20 @@ app.use(express.json());
 //log request info
 app.use(morgan('tiny'));
 
-// set up routes for auth/app functionality
-app.use('/auth', authRoutes);
-
 //check if a token exists in the auth header, if it does, attach the decoded user to res.locals
 app.use(security.extractUserFromJwt);
+
+// set up routes for auth/app functionality
+app.use('/auth', authRoutes);
 
 // generic error handling (404)
 app.use((req, res, next) => {
     return next(new NotFoundError());
 })
 
-// generic error handling
+// generic error handling. 
+// If the request does not lead to 
+// anything else, input error or unhandled error (500)
 app.use((err, req, res, next) => {
     const status = err.status || 500
     const message = err.message
