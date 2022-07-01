@@ -37,6 +37,9 @@ export default function App() {
   const [errorMessage, setErrorMessage] = React.useState();
 
   // onSubmit handler for login
+  // if the user makes a request to login, create a
+  // POST request that will send all the data collected
+  // and in response, update auth data for the app's convenience
   const handleOnSubmitLogin = async(user) => {
     try {
       const response = await axios.post(
@@ -49,7 +52,9 @@ export default function App() {
         setAuth({email: user.email, loggedIn: true});
       }
     } catch (error) {
-      console.error("Login error:", error);
+      console.error("Login error:", error); //debug
+      // change useState message to make user aware of error
+      setErrorMessage(error?.response?.data?.error?.message);
     }
   }
   // onSubmit handler for registration
@@ -61,11 +66,10 @@ export default function App() {
         console.log("response register:", response?.data);
         setAuth({email: user.email, loggedIn: true});
       }
-
-      return true
     } catch (error) {
       console.error("Registration error:", error);
-      return false
+      // change useState message to make user aware of error
+      setErrorMessage(error?.response?.data?.error?.message);
     }
   }
 
@@ -83,8 +87,8 @@ export default function App() {
           <Navbar handleOnLogout={handleOnLogout} auth={auth}/>
           <Routes>
             <Route path='/' element={<LandingPage />} />
-            <Route path='/login' element={<LoginPage errorMessage={errorMessage} setAuth={setAuth} auth={auth} handleOnSubmit={handleOnSubmitLogin}/>} />
-            <Route path='/register' element={<RegistrationPage setAuth={setAuth} auth={auth} handleOnSubmit={handleOnSubmitRegistration}/>} />
+            <Route path='/login' element={<LoginPage errorMessage={errorMessage} setErrorMessage={setErrorMessage} setAuth={setAuth} auth={auth} handleOnSubmit={handleOnSubmitLogin}/>} />
+            <Route path='/register' element={<RegistrationPage errorMessage={errorMessage} setErrorMessage={setErrorMessage} setAuth={setAuth} auth={auth} handleOnSubmit={handleOnSubmitRegistration}/>} />
             <Route
               path='/activity'
               element={auth.loggedIn ?

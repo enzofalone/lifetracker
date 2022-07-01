@@ -5,7 +5,7 @@ import { Link, Navigate } from 'react-router-dom';
 import AuthContext from '../../../contexts/AuthProvider';
 
 export default function LoginForm(props) {
-      // AuthContext
+    // AuthContext
     const { auth, setAuth } = React.useContext(AuthContext);
 
     const loginFormInit = {
@@ -20,6 +20,7 @@ export default function LoginForm(props) {
             ...prevForm,
             [event.target.name]: event.target.value
         }));
+        props.setErrorMessage();
     }
 
     return (
