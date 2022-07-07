@@ -1,3 +1,4 @@
+import NutritionContext from "../../../contexts/nutrition";
 import React from "react";
 import { NavLink } from "react-router-dom";
 import apiClient from "../../../services/apiClient";
@@ -8,24 +9,8 @@ import './NutritionPage.css'
 export default function NutritionPage(props) {
     const [errorMessage, setErrorMessage] = React.useState();
 
-    
-
-    const getNutrition = () => {
-        console.log("getNutrition", props?.nutrition);
-        if (props?.nutrition.length > 0) {
-            console.log("conditional check", props?.nutrition);
-            props?.nutrition?.map((item) => {
-                return (<NutritionCard name={item.name} category={item.category} calories={item.calories} quantity={item.quantity} image={item.image} />)
-            })
-        }
-    }
-    console.log("Nutrition Page Render", props?.nutrition);
-
-    if (props.isFetching) {
-        return (
-            <h1>Loading...</h1>
-        )
-    }
+    const { nutritionContext } = React.useContext(NutritionContext);
+    const [nutritions, setNutritions] = nutritionContext;
 
     return (
         <div className="nutrition-page">
@@ -39,7 +24,15 @@ export default function NutritionPage(props) {
                     </section>
                 </div>
                 <div className="nutrition-body">
-                    {getNutrition()}
+                    {nutritions.length > 0 ? Object.keys(nutritions).map((item) => {
+                return (<NutritionCard
+                            key={nutritions[item].id} 
+                            name={nutritions[item].name} 
+                            category={nutritions[item].category} 
+                            calories={nutritions[item].calories} 
+                            quantity={nutritions[item].quantity} 
+                            image={nutritions[item].image} />)
+            }): <></>}
                 </div>
             </div>
         </div>

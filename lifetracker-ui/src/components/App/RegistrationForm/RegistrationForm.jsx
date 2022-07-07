@@ -15,8 +15,10 @@ export default function RegistrationForm(props) {
         passwordConfirm: ''
     }
 
+    // useContext hook
+    const { userContext } = React.useContext(AuthContext);
+    const [ user, setUser ] = userContext;
     const [registrationForm, setRegistrationForm] = React.useState(registrationFormInit);
-    const { auth, setAuth } = React.useContext(AuthContext);
 
     const onFormChange = (event) => {
         setRegistrationForm((prevForm) => ({
@@ -31,7 +33,7 @@ export default function RegistrationForm(props) {
         const { data, error } = await apiClient.signupUser(registrationForm);
         if (error) props.setErrorMessage(error)
         if (data?.user) {
-            setAuth({ ...data, loggedIn: true });
+            setUser(user);
             apiClient.setToken(data.token)
         }
     }
@@ -39,7 +41,7 @@ export default function RegistrationForm(props) {
     return (
         <div className="registration-form form">
             {/* check if user is logged in */}
-            {auth.loggedIn && (<Navigate to="/activity" replace={true}/>)}
+            {user?.email && (<Navigate to="/activity" replace={true} />)}
             <h1>Register</h1>
             {/* error message if axios requests catch an error */}
             <p style={{ color: 'red' }}>{props?.errorMessage}</p>

@@ -6,8 +6,9 @@ import AuthContext from '../../../contexts/AuthProvider';
 import apiClient from '../../../services/apiClient'
 
 export default function LoginForm(props) {
-    // AuthContext
-    const { auth, setAuth } = React.useContext(AuthContext);
+    // useContext hook
+    const { userContext } = React.useContext(AuthContext);
+    const [ user, setUser ] = userContext;
 
     const loginFormInit = {
         email: '',
@@ -25,21 +26,21 @@ export default function LoginForm(props) {
     }
 
     const handleOnSubmit = async () => {
-        const {data, error} = await apiClient.loginUser(loginForm);
-        if(error) props.setErrorMessage(error);
+        const { data, error } = await apiClient.loginUser(loginForm);
+        if (error) props.setErrorMessage(error);
         if (data?.user) {
-            setAuth({ ...data, loggedIn: true });
-            console.log('login form token received:' , data.token);
-            apiClient.setToken(data.token)
+            setUser(data.user);
+            console.log('login form token received:', data.token);
+            apiClient.setToken(data.token);
+            
         }
     }
 
     return (
-        
         <div className="login-form form">
-            {auth.loggedIn && (<Navigate to="/activity" replace={true}/>)}
+            {/* {user?.email && (<Navigate to="/activity" replace={true} />)} */}
             <h1>Login</h1>
-            <p style={{color: 'red'}}>{props?.errorMessage}</p>
+            <p style={{ color: 'red' }}>{props?.errorMessage}</p>
             <input name='email' placeholder='John@Doe.io' value={loginForm.email} onChange={onFormChange} required type='email' />
             <input name='password' placeholder='Password' value={loginForm.password} onChange={onFormChange} required type='password' />
 

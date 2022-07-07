@@ -27,7 +27,7 @@ export default function NutritionForm(props) {
         if (error) setError(error);
         //set nutritions useState to render later in the NutritionsPage
         props.setNutrition(data.nutritions);
-
+        setForm(formInit);
         //TODO: NAVIGATE TO NUTRITIONS PAGE AFTER REQUEST
     }
 

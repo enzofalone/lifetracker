@@ -9,7 +9,7 @@ export default function Navbar(props) {
         <div className="navbar">
             <div className="content">
                 <Link className="logo" to='/'><img src={logo} ></img></Link>
-                <NavLinks auth={props.auth} handleOnLogout={props.handleOnLogout} />
+                <NavLinks user={props.user} handleOnLogout={props.handleOnLogout} />
             </div>
         </div>
     )

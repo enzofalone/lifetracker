@@ -4,15 +4,16 @@ import './ActivityPage.css'
 
 export default function ActivityPage(props) {
     // check if user is aunthenticated
-    !props.auth.loggedIn && (<Navigate to='/login' replace={true} />)
-    console.log(props.auth);
+    console.log(props.user);
+    // !props.user.email && (<Navigate to='/login' replace={true} />)
+
     return (
         <div className="activity">
             <div className="content">
                 <div className="headline">
                     <section>
                         {/* <h1>Activity Feed 💪</h1> */}
-                        <h1>Welcome back, {props.auth.user.firstName}</h1>
+                        <h1>Welcome back, {props.user.firstName}</h1>
                     </section>
                     <section>
                         <NavLink to='/exercise/create' className="record-button" style={{ backgroundColor: '#8b0000' }}>Add Exercise</NavLink>

@@ -18,7 +18,7 @@ export default function NavLinks(props) {
                         {isActive => 'nav-link' + (!isActive ? ' unselected' : '')} to='/exercise'>Exercise</NavLink>
 
 
-            {(!props?.auth?.loggedIn ? 
+            {(!props?.user?.email ? 
                 <NavLink 
                     className=
                         {isActive => 'nav-link' + (!isActive ? ' unselected' : '')} to='/login'>Login</NavLink>
@@ -27,7 +27,7 @@ export default function NavLinks(props) {
                         onClick={(e) => handleOnClickLogout()}>
                             Logout
                         </NavLink>)}
-            {(!props?.auth?.loggedIn ? 
+            {(!props?.user?.email ? 
                 <NavLink className={isActive => 'nav-link button-filled' + (!isActive ? ' unselected' : '')} 
                 to='/register'>
                     Sign Up
