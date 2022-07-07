@@ -5,7 +5,7 @@ class Nutrition {
     // function that fetches all nutrition based on user's email
     static async fetch(email) {
         const result = await db.query(
-            `SELECT name, category, quantity, calories, image 
+            `SELECT id, name, category, quantity, calories, image 
             FROM nutrition 
             WHERE user_email=$1
             ORDER BY id DESC`

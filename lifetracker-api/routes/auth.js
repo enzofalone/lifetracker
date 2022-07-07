@@ -5,9 +5,6 @@ const router = express.Router();
 const security = require('../middleware/security');
 const {createUserJwt} = require('../utils/tokens');
 
-
-
-
 router.post('/login', async (req, res, next) => {
     try {
         //take user email and password to log in into app
