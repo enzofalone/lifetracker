@@ -1,5 +1,5 @@
 const security = require("../middleware/security");
-const { authedUserIsNutritionOwner } = require("../middleware/permissions");
+const { authedUserIsExerciseOwner } = require("../middleware/permissions");
 const Exercise = require("../models/exercise");
 const User = require('../models/user')
 const express = require("express");
@@ -39,7 +39,7 @@ router.post(
 router.get(
   "/id/:id",
   security.requireAuthenticatedUser,
-  authedUserIsNutritionOwner,
+  authedUserIsExerciseOwner,
   async (req, res, next) => {
     try {
       //retrieve id in params
