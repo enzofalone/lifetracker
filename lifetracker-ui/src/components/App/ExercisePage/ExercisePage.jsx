@@ -1,9 +1,23 @@
-export default function ExercisePage() {
+import { Navigate, Route, Routes } from "react-router-dom"
+import ExerciseDetail from "../ExerciseDetail/ExerciseDetail"
+import ExerciseNew from "../ExerciseNew/ExerciseNew"
+import ExerciseOverview from "../ExerciseOverview/ExerciseOverview"
+
+export default function ExercisePage(props) {
     return (
         <div className="exercise-page">
-            <div className="content">
-                <h1 style={{ color: 'red' }}>IMPLEMENT THIS</h1>
-            </div>
+            {!props.user.email && (<Navigate to='/login' replace={true} />)}
+          <Routes>
+            <Route
+              path='/'
+              element={<ExerciseOverview/>} />
+            <Route
+              path='/create'
+              element={<ExerciseNew/>} />
+            <Route
+              path='/id/:exerciseId'
+              element={<ExerciseDetail/>} />
+          </Routes>
         </div>
-    )
+      )
 }

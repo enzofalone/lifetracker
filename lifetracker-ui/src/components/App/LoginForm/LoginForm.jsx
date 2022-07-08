@@ -17,6 +17,11 @@ export default function LoginForm(props) {
 
     const [loginForm, setLoginForm] = React.useState(loginFormInit);
 
+    // reset error message on mount
+    React.useEffect(() => {
+        props.setErrorMessage();
+    }, [])
+
     const onFormChange = (event) => {
         setLoginForm((prevForm) => ({
             ...prevForm,
@@ -38,10 +43,12 @@ export default function LoginForm(props) {
 
     return (
         <div className="login-form form">
-            {/* {user?.email && (<Navigate to="/activity" replace={true} />)} */}
+            {user?.email && (<Navigate to="/activity" replace={true} />)}
             <h1>Login</h1>
             <p style={{ color: 'red' }}>{props?.errorMessage}</p>
+            <label htmlFor='email'>Email</label>
             <input name='email' placeholder='John@Doe.io' value={loginForm.email} onChange={onFormChange} required type='email' />
+            <label htmlFor='password'>Password</label>
             <input name='password' placeholder='Password' value={loginForm.password} onChange={onFormChange} required type='password' />
 
             <button onClick={(e) => handleOnSubmit()} className='submit-login form-button'>Login</button>

@@ -21,7 +21,7 @@ export const NutritionContextProvider = ({ children }) => {
       setIsLoading(true);
 
       try {
-        const { data, errorNutrition } = await apiClient.fetchNutrition();
+        const { data, errorNutrition } = await apiClient.fetchNutritions();
 
         if (errorNutrition) setError(errorNutrition);
         if (data?.nutritions) setNutritions(data?.nutritions);
@@ -40,7 +40,7 @@ export const NutritionContextProvider = ({ children }) => {
       setInitialized(true);
     }
 
-  }, []);
+  }, [user]);
 
   // check if there where any errors after doing a request
   if (error) {

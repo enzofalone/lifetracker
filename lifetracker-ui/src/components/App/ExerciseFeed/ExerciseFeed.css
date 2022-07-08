@@ -1,0 +1,10 @@
+.exercise-feed {
+    display:flex;
+    flex-basis: 30%;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+.exercise-feed>a {
+    text-decoration: none;
+}

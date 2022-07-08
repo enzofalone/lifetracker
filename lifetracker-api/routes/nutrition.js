@@ -4,7 +4,6 @@ const Nutrition = require("../models/nutrition");
 const router = express.Router();
 const security = require("../middleware/security");
 const { authedUserIsNutritionOwner } = require("../middleware/permissions");
-const { createUserJwt } = require("../utils/tokens");
 
 // request that creates a new entry in the name of the user
 router.post(

@@ -4,6 +4,8 @@ import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom"
 import AuthContext from '../../contexts/AuthProvider'
 import { API_BASE_URL } from "../../constants";
 import apiClient from "../../services/apiClient"
+import NutritionContext from "../../contexts/nutrition";
+import ActivityContext from "../../contexts/activity";
 // css
 import "./App.css"
 
@@ -15,9 +17,10 @@ import RegistrationPage from './RegistrationPage/RegistrationPage';
 import ActivityPage from './ActivityPage/ActivityPage';
 import NutritionPage from './NutritionPage/NutritionPage';
 import NotFound from './NotFound/NotFound';
-import NutritionForm from "./NutritionForm/NutritionForm";
 import ExercisePage from "./ExercisePage/ExercisePage";
 import ExerciseForm from "./ExerciseForm/ExerciseForm";
+import ExerciseContext from "../../contexts/exercise";
+
 
 export default function App() {
   const NOT_AUTH_MESSAGE = "You must be logged in to access that page";
@@ -36,12 +39,23 @@ export default function App() {
   const [errorMessage, setErrorMessage] = React.useState();
   // useContext hook
   const { userContext } = React.useContext(AuthContext);
-  const [ user, setUser ] = userContext;
+  const [user, setUser] = userContext;
 
+  const { activityContext } = React.useContext(ActivityContext);
+  const [activity, setActivity] = activityContext;
+
+  const {nutritionContext } = React.useContext(NutritionContext);
+  const [nutrition, setNutrition] = nutritionContext;
+
+  const {exerciseContext} = React.useContext(ExerciseContext);
+  const [exercises, setExercises] = exerciseContext;
   //Log out handler
   const handleOnLogout = () => {
     //reset state to empty object
     setUser({});
+    setNutrition({});
+    setActivity({});
+    setExercises({});
     //reset token from local storage
     localStorage.removeItem(apiClient.tokenName);
   }
@@ -53,9 +67,9 @@ export default function App() {
           <Navbar handleOnLogout={handleOnLogout} user={user} />
           <Routes>
             <Route path='/' element={<LandingPage />} />
-            <Route path='/login' element={<LoginPage errorMessage={errorMessage} setErrorMessage={setErrorMessage}/>} />
-            <Route path='/register' element={<RegistrationPage errorMessage={errorMessage} setErrorMessage={setErrorMessage}/>} />
-            {/* TODO: CREATE AUTHORIZED ROUTES */}
+            <Route path='/login' element={<LoginPage errorMessage={errorMessage} setErrorMessage={setErrorMessage} />} />
+            <Route path='/register' element={<RegistrationPage errorMessage={errorMessage} setErrorMessage={setErrorMessage} />} />
+
             <Route
               path='/activity'
               element={user?.email ?
@@ -63,28 +77,15 @@ export default function App() {
                 : <Navigate to='/login' />} />
 
             <Route
-              path='/nutrition'
-              element={user?.email ?
-                <NutritionPage user={user} />
-                : <Navigate to='/login' />} />
+              path='/nutrition/*'
+              element={<NutritionPage user={user} />} />
+            
 
             <Route
-              path='/exercise'
-              element={user?.email ?
-                <ExercisePage user={user} />
-                : <Navigate to='/login' />} />
+              path='/exercise/*'
+              element={<ExercisePage user={user} />} />
 
-            <Route
-              path='/exercise/create'
-              element={user?.email ?
-                <ExerciseForm user={user} />
-                : <Navigate to='/login' />} />
 
-            <Route
-              path='/nutrition/create'
-              element={user?.email ?
-                <NutritionForm user={user} />
-                : <Navigate to='/login' />} />
 
             {/* {// TODO: render if user is logged in, otherwise, render AccessForbidden component*/}
 

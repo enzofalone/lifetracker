@@ -1,19 +1,24 @@
+import ActivityContext from "../../../contexts/activity";
+import { capitalize } from "lodash";
+import { useContext } from "react";
 import { Navigate, NavLink } from "react-router-dom";
+import ActivityFeed from "../ActivityFeed/ActivityFeed";
 
 import './ActivityPage.css'
 
 export default function ActivityPage(props) {
-    // check if user is aunthenticated
-    console.log(props.user);
-    // !props.user.email && (<Navigate to='/login' replace={true} />)
+    const { activityContext } = useContext(ActivityContext);
+    const [ activity, setActivity ] = activityContext;
+
+    !props.user.email && (<Navigate to='/login' replace={true} />)
 
     return (
-        <div className="activity">
+        <div className="activity-page">
             <div className="content">
                 <div className="headline">
                     <section>
                         {/* <h1>Activity Feed 💪</h1> */}
-                        <h1>Welcome back, {props.user.firstName}</h1>
+                        <h1>Welcome back, {capitalize(props.user.firstName)}</h1>
                     </section>
                     <section>
                         <NavLink to='/exercise/create' className="record-button" style={{ backgroundColor: '#8b0000' }}>Add Exercise</NavLink>
@@ -21,18 +26,9 @@ export default function ActivityPage(props) {
                         <NavLink to='/nutrition/create' className="record-button" style={{ backgroundColor: '#8B8000' }}>Record Nutrition</NavLink>
                     </section>
                 </div>
-                <div className="activity-body">
-                    <div className="stat-container">
-
-                    </div>
-                    <div className="stat-container">
-                        
-                    </div>
-                    <div className="stat-container">
-                        
-                    </div>
-                </div>
             </div>
+            <ActivityFeed avgCaloriesPerCategory={activity.avgCaloriesPerCategory} totalCaloriesPerDay={activity.totalCaloriesPerDay}/>
+
         </div>
 
     )

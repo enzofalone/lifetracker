@@ -1,7 +1,12 @@
-import { useState } from 'react';
+import { useContext, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+import NutritionContext from "../../../contexts/nutrition";
 import apiClient from '../../../services/apiClient';
 
-export default function NutritionForm(props) {
+export default function NutritionForm() {
+    const { nutritionContext } = useContext(NutritionContext);
+    const [nutritions, setNutritions] = nutritionContext;
+    const navigate = useNavigate();
     const formInit = {
         name: '',
         category: '',
@@ -21,14 +26,19 @@ export default function NutritionForm(props) {
         //reset error message as user is already making changes
         setError();
     }
-
+    //
     const handleOnSubmit = async () => {
         const { data, error } = await apiClient.createNutrition(form);
-        if (error) setError(error);
-        //set nutritions useState to render later in the NutritionsPage
-        props.setNutrition(data.nutritions);
-        setForm(formInit);
-        //TODO: NAVIGATE TO NUTRITIONS PAGE AFTER REQUEST
+        if (error) {
+            setError(error)
+        } else {
+            //set nutritions useState
+            setNutritions(data.nutritions);
+            //reset form
+            setForm(formInit);
+            //navigate to nutrition main page
+            navigate('/nutrition');
+        }
     }
 
     return (

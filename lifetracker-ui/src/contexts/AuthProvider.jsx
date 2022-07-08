@@ -49,7 +49,11 @@ export const AuthProvider = ({ children }) => {
 
   // check if it is still fetching data between renders
   if (!initialized) {
-    return (<h1>Authenticating user...</h1>)
+    return (
+    <div className='content'>
+      <h1>Authenticating user...</h1>
+    </div>
+    )
   }
 
   // check if any errors have been found in useEffect request

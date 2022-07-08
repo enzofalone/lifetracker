@@ -1,0 +1,11 @@
+/* body container where all cards will be displayed */
+.nutrition-feed {
+    display:flex;
+    flex-basis: 30%;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+.nutrition-feed>a {
+    text-decoration: none;
+}

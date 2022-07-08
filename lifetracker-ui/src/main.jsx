@@ -4,12 +4,19 @@ import { App } from "components"
 import "./globals.css"
 import { AuthProvider } from './contexts/AuthProvider';
 import { NutritionContextProvider } from "./contexts/nutrition"
+import { ActivityContextProvider } from "./contexts/activity";
+import { ExerciseContextProvider } from "./contexts/exercise";
 
 ReactDOM.render(
   <React.StrictMode>
     <AuthProvider>
       <NutritionContextProvider>
-        <App />
+        <ExerciseContextProvider>
+        <ActivityContextProvider>
+          
+          <App/>
+        </ActivityContextProvider>
+        </ExerciseContextProvider>
       </NutritionContextProvider>
     </AuthProvider>
   </React.StrictMode>,

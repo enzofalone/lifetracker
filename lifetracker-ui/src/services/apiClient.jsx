@@ -14,16 +14,18 @@ class ApiClient {
     //setter
     setToken(token) {
         this.token = token;
-        localStorage.setItem(this.tokenName,token);
+        localStorage.setItem(this.tokenName, token);
     }
 
     async request({ endpoint, method = `GET`, data = {} }) {
         const url = `${this.remoteHostUrl}/${endpoint}`
 
-        const headers = {"Content-Type": "application/json"}
+        const headers = { "Content-Type": "application/json" }
 
         if (this.token) {
             headers["Authorization"] = `Bearer ${this.token}`;
+        } else {
+            console.log("no token");
         }
 
         try {
@@ -39,24 +41,48 @@ class ApiClient {
     }
 
     async loginUser(credentials) {
-        return await this.request({endpoint: `auth/login`, method: `POST`, data: credentials})
+        return await this.request({ endpoint: `auth/login`, method: `POST`, data: credentials })
     }
 
     async signupUser(credentials) {
         console.log(credentials);
-        return await this.request({endpoint: `auth/register`, method: `POST`, data: credentials})
+        return await this.request({ endpoint: `auth/register`, method: `POST`, data: credentials })
     }
 
     async fetchUserFromToken() {
-        return await this.request({endpoint: `auth/me`, method: `GET`})
+        return await this.request({ endpoint: `auth/me`, method: `GET` })
     }
 
     async createNutrition(credentials) {
-        return await this.request({endpoint: `nutrition/create`, method: `POST`, data: credentials})
+        return await this.request({ endpoint: `nutrition/create`, method: `POST`, data: credentials })
     }
 
-    async fetchNutrition() {
-        return await this.request({endpoint: `nutrition/`, method: `GET`})
+    async fetchNutritions() {
+        return await this.request({ endpoint: `nutrition/`, method: `GET` })
+    }
+
+    async fetchNutritionById(id) {
+        return await this.request({ endpoint: `nutrition/id/${id}`, method: `GET` })
+    }
+
+    // exercise requests
+
+    async createExercise(credentials) {
+        return await this.request({ endpoint: `exercise/create`, method: `POST`, data: credentials })
+    }
+
+    async fetchExercises() {
+        return await this.request({ endpoint: `exercise/`, method: `GET` })
+    }
+
+    async fetchExerciseById(id) {
+        return await this.request({ endpoint: `exercise/id/${id}`, method: `GET` })
+    }
+
+    // activity requests
+
+    async getActivity() {
+        return await this.request({endpoint: `activity/`, method: `GET`})
     }
 
 }

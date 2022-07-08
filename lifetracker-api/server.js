@@ -3,9 +3,12 @@ const cors = require('cors');
 const morgan = require('morgan');
 const { NotFoundError } = require('./utils/errors');
 const { PORT } = require('./config');
+// routes
 const authRoutes = require('./routes/auth');
 const security = require('./middleware/security');
 const nutritionRoutes = require('./routes/nutrition')
+const activityRoutes = require('./routes/activity');
+const exerciseRoutes = require('./routes/exercise');
 
 const app = express()
 
@@ -23,6 +26,12 @@ app.use(security.extractUserFromJwt);
 
 // set up routes for auth/app functionality
 app.use('/auth', authRoutes);
+
+// set up routes for activity section
+app.use('/activity', activityRoutes);
+
+// set up routes for exercise section
+app.use('/exercise', exerciseRoutes);
 
 // set up routes for nutrition section
 app.use('/nutrition', nutritionRoutes)

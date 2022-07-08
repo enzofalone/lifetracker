@@ -1,6 +1,6 @@
 import './RegistrationForm.css';
 import * as React from 'react';
-import { Link, Navigate } from 'react-router-dom';
+import { Link, Navigate, useNavigate } from 'react-router-dom';
 
 import AuthContext from '../../../contexts/AuthProvider';
 import apiClient from '../../../services/apiClient'
@@ -17,8 +17,13 @@ export default function RegistrationForm(props) {
 
     // useContext hook
     const { userContext } = React.useContext(AuthContext);
-    const [ user, setUser ] = userContext;
+    const [user, setUser] = userContext;
     const [registrationForm, setRegistrationForm] = React.useState(registrationFormInit);
+
+    // reset error message on mount
+    React.useEffect(() => {
+        props.setErrorMessage();
+    }, [])
 
     const onFormChange = (event) => {
         setRegistrationForm((prevForm) => ({
@@ -33,7 +38,7 @@ export default function RegistrationForm(props) {
         const { data, error } = await apiClient.signupUser(registrationForm);
         if (error) props.setErrorMessage(error)
         if (data?.user) {
-            setUser(user);
+            setUser(data?.user);
             apiClient.setToken(data.token)
         }
     }
@@ -46,12 +51,24 @@ export default function RegistrationForm(props) {
             {/* error message if axios requests catch an error */}
             <p style={{ color: 'red' }}>{props?.errorMessage}</p>
             {/* form fields */}
-            <input name='email' placeholder='Email' value={registrationForm.email} onChange={onFormChange} required type='email' />
-            <input name='username' placeholder='Username' value={registrationForm.username} onChange={onFormChange} required type='text' />
-            <input name='firstName' placeholder='First Name' value={registrationForm.firstName} onChange={onFormChange} required type='text' />
-            <input name='lastName' placeholder='Last Name' value={registrationForm.lastName} onChange={onFormChange} required type='text' />
-            <input name='password' placeholder='Password' value={registrationForm.password} onChange={onFormChange} required type='password' />
-            <input name='passwordConfirm' placeholder='Confirm Password' value={registrationForm.passwordConfirm} onChange={onFormChange} required type='password' />
+            <label className='form-label' htmlFor='email'>Email</label>
+            <input className='form-input' name='email' placeholder='Email' value={registrationForm.email} onChange={onFormChange} required type='email' />
+            <label className='form-label' htmlFor='username'>Username</label>
+            <input className='form-input' name='username' placeholder='Username' value={registrationForm.username} onChange={onFormChange} required type='text' />
+            <div className="form-division">
+                <div>
+                <label className='form-label' htmlFor='first-name'>First Name</label>
+                <input className='form-input' name='firstName' placeholder='First Name' value={registrationForm.firstName} onChange={onFormChange} required type='text' />
+                </div>
+                <div>
+                <label className='form-label' htmlFor='lastName'>Last Name</label>
+                <input className='form-input' name='lastName' placeholder='Last Name' value={registrationForm.lastName} onChange={onFormChange} required type='text' />
+                </div>
+            </div>
+            <label className='form-label' htmlFor='password'>Password</label>
+            <input className='form-input' name='password' placeholder='Password' value={registrationForm.password} onChange={onFormChange} required type='password' />
+            <label className='form-label' htmlFor='re-password'>Confirm Password</label>
+            <input className='form-input' name='passwordConfirm' placeholder='Confirm Password' value={registrationForm.passwordConfirm} onChange={onFormChange} required type='password' />
             {/* submit button */}
             <button onClick={(e) => handleOnSubmit()} className='submit-registration form-button'>Create Account</button>
             {/* redirect button to /login */}
