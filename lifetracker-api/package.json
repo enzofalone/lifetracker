@@ -1,5 +1,5 @@
 {
-  "name": "lifetracker-app-api",
+  "name": "lifetracker-api",
   "version": "0.0.1",
   "description": "Express backend for the LifeTracker application",
   "main": "server.js",
