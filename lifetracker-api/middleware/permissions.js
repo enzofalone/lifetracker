@@ -11,11 +11,11 @@ const authedUserIsNutritionOwner = async (req, res, next) => {
     const id = req.params.id;
     // fetch the nutrition item by id
     const nutrition = await Nutrition.fetchById(id);
-    console.log("permissions", nutritionItem.userEmail, user.email);
+    console.log("permissions", nutrition.userEmail, user.email);
     // compare if both emails match
     // if not keep following the pipeline
-    if (nutritionItem.userEmail !== user.email) {
-      throw new ForbiddenError();
+    if (nutrition.userEmail !== user.email) {
+      throw new ForbiddenError("You are not authorized to see this nutrition item!");
     }
 
     return next();

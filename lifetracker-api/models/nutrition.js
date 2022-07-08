@@ -23,10 +23,10 @@ class Nutrition {
     if (typeof(parsedId) !== "number" || typeof(parsedId) === NaN)
       throw new BadRequestError("Parameter is not a valid ID");
 
-    const result = await db.query(`SELECT id, name, category, quantity, calories, image 
+    const result = await db.query(`SELECT id, name, category, quantity, calories, image, user_email AS "userEmail" 
     FROM nutrition 
     WHERE id=$1`, [id]);
-    console.log(result.rows);
+    
     if (result?.rows) {
       return result.rows[0];
     } else {

@@ -45,7 +45,6 @@ router.get(
   async (req, res, next) => {
     try {
       //retrieve id in params
-      console.log("params:", req.params);
       const id = req.params.id;
       // fetch the nutrition item by id
       const nutrition = await Nutrition.fetchById(id);
