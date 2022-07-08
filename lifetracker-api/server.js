@@ -21,11 +21,11 @@ app.use(morgan('tiny'));
 //check if a token exists in the auth header, if it does, attach the decoded user to res.locals
 app.use(security.extractUserFromJwt);
 
-// set up routes for nutrition section
-app.use('/nutrition', nutritionRoutes)
-
 // set up routes for auth/app functionality
 app.use('/auth', authRoutes);
+
+// set up routes for nutrition section
+app.use('/nutrition', nutritionRoutes)
 
 // generic error handling (404)
 app.use((req, res, next) => {

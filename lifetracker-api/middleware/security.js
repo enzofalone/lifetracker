@@ -13,7 +13,7 @@ const jwtFrom = ({headers}) => {
 
     return undefined
 }
-// function that attaches the user to the res object
+// function that attaches the user to res.locals
 const extractUserFromJwt = (req,res,next) => {
     try {
         const token = jwtFrom(req);

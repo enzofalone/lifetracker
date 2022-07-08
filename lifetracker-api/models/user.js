@@ -14,7 +14,6 @@ class User {
         return {
             id: user.id,
             email: user.email,
-            password: user.password,
             firstName: user.first_name,
             lastName: user.last_name,
         }
@@ -31,10 +30,10 @@ class User {
         const user = await User.fetchUserByEmail(credentials.email);
 
         if(user) {
-            console.log("credentials.password",credentials.password);
-            console.log("user.password", user.password);
             const isValid = await bcrypt.compare(credentials.password, user.password);
+            
             if(isValid) {
+                console.log(user);
                 return this.makePublicUser(user);
             } else {
                 console.log("invalid");
@@ -99,7 +98,7 @@ class User {
         const result = await db.query(query, [email.toLowerCase()]);
 
         const user = result.rows[0];
-        return this.makePublicUser(user)
+        return user
     }
 }
 
