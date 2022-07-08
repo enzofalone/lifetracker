@@ -5,7 +5,7 @@ require('colors');
 const PORT = process.env.PORT ? Number(process.env.PORT) : 3001;
 
 //get secret key in .env
-const SECRET_KEY = process.env.SECRET_KEY;
+const SECRET_KEY = process.env.SECRET_KEY || "CHANGE_THIS";
 
 function getDatabaseUri() {
     const dbUser = process.env.DATABASE_USER || 'postgres'
@@ -16,7 +16,7 @@ function getDatabaseUri() {
 
     // if the DATABASE_URL environment variable, use that,
     // otherwise create the db connection string ourselves
-    return process.env.DATABASE_URL || `postgresql://${dbUser}:${dbPass}@${dbHost}:${dbPort}/${dbName}`
+    return process.env.DATABASE_URL || `postgresql://${dbUser}:${dbPass}@${dbHost}:${dbPort}/${dbName}`;
 }
 // set work factor for hashing
 const BCRYPT_WORK_FACTOR = 10;

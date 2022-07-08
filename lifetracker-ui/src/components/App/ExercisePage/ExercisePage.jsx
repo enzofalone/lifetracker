@@ -6,7 +6,7 @@ import ExerciseOverview from "../ExerciseOverview/ExerciseOverview"
 export default function ExercisePage(props) {
     return (
         <div className="exercise-page">
-            {!props.user.email && (<Navigate to='/login' replace={true} />)}
+            {!props.user.email && (<Navigate to='/forbidden' replace={true} />)}
           <Routes>
             <Route
               path='/'

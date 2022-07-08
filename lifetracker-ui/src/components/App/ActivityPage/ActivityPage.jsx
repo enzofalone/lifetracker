@@ -10,10 +10,11 @@ export default function ActivityPage(props) {
     const { activityContext } = useContext(ActivityContext);
     const [ activity, setActivity ] = activityContext;
 
-    !props.user.email && (<Navigate to='/login' replace={true} />)
+    
 
     return (
         <div className="activity-page">
+            {!props.user.email && (<Navigate to='/forbidden' replace={true} />)}
             <div className="content">
                 <div className="headline">
                     <section>

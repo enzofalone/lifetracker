@@ -20,6 +20,7 @@ import NotFound from './NotFound/NotFound';
 import ExercisePage from "./ExercisePage/ExercisePage";
 import ExerciseForm from "./ExerciseForm/ExerciseForm";
 import ExerciseContext from "../../contexts/exercise";
+import AccessForbidden from "./AccessForbidden/AccessForbidden";
 
 
 export default function App() {
@@ -74,7 +75,7 @@ export default function App() {
               path='/activity'
               element={user?.email ?
                 <ActivityPage user={user} />
-                : <Navigate to='/login' />} />
+                : <Navigate to='/forbidden' />} />
 
             <Route
               path='/nutrition/*'
@@ -86,7 +87,9 @@ export default function App() {
               element={<ExercisePage user={user} />} />
 
 
-
+            <Route
+              path='/forbidden'
+              element={<AccessForbidden/>}/>
             {/* {// TODO: render if user is logged in, otherwise, render AccessForbidden component*/}
 
             <Route path='*' element={<NotFound />} />

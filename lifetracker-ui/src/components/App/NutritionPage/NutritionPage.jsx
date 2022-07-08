@@ -13,7 +13,7 @@ export default function NutritionPage(props) {
 
   return (
     <div className="nutrition-page">
-      {!props.user.email && (<Navigate to='/login' replace={true} />)}
+      {!props.user.email && (<Navigate to='/forbidden' replace={true} />)}
       <Routes>
         <Route
           path='/'

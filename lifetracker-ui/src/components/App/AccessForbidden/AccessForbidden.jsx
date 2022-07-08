@@ -1,4 +1,6 @@
 
+import './AccessForbidden.css'
+
 export default function AccessForbidden(props) {
     return (
         <div className="access-forbidden content">

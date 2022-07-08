@@ -23,7 +23,7 @@ body {
 
 .app {
   background-color: black;
-  background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url('../../../../res/hero2.jpg');
+  background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url('https://github.com/enzofalone/lifetracker/blob/main/lifetracker-ui/res/hero2.jpg?raw=true');
 
   background-attachment: fixed;
   background-position: center;

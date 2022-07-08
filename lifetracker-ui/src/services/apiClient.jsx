@@ -1,5 +1,5 @@
 import axios from 'axios';
-
+import { API_BASE_URL } from '../constants';
 
 /**
  * API CLIENT class is in charge of creating requests to the server 
@@ -18,7 +18,7 @@ class ApiClient {
     }
 
     async request({ endpoint, method = `GET`, data = {} }) {
-        const url = `${this.remoteHostUrl}/${endpoint}`
+        const url = `${this.remoteHostUrl}${endpoint}`
 
         const headers = { "Content-Type": "application/json" }
 
@@ -87,4 +87,4 @@ class ApiClient {
 
 }
 
-export default new ApiClient(process.env.REACT_APP_REMOTE_HOST_URL)
+export default new ApiClient(API_BASE_URL)
