@@ -45,7 +45,7 @@ export default function LoginForm(props) {
         <div className="login-form form">
             {user?.email && (<Navigate to="/activity" replace={true} />)}
             <h1>Login</h1>
-            <p style={{ color: 'red' }}>{props?.errorMessage}</p>
+            <p className='error' style={{ color: 'red' }}>{props?.errorMessage}</p>
             <label htmlFor='email'>Email</label>
             <input className='form-input' name='email' placeholder='John@Doe.io' value={loginForm.email} onChange={onFormChange} required type='email' />
             <label htmlFor='password'>Password</label>

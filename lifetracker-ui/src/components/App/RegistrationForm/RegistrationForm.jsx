@@ -55,7 +55,7 @@ export default function RegistrationForm(props) {
             {user?.email && (<Navigate to="/activity" replace={true} />)}
             <h1>Register</h1>
             {/* error message if axios requests catch an error */}
-            <p style={{ color: 'red' }}>{props?.errorMessage}</p>
+            <p className='error' style={{ color: 'red' }}>{props?.errorMessage}</p>
             {/* form fields */}
             <label className='form-label' htmlFor='email'>Email</label>
             <input className='form-input' name='email' placeholder='Email' value={registrationForm.email} onChange={onFormChange} required type='email' />
