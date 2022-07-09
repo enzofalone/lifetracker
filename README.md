@@ -38,7 +38,7 @@ Implement any of the following features to improve the application:
 
 ### Walkthrough Video
 
-<img src="https://github.com/enzofalone/lifetracker/blob/main/week5.gif"/>
+<img src="https://github.com/enzofalone/lifetracker/blob/main/week5.gif?raw=true"/>
 
 ### Reflection
 
