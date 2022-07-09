@@ -50,7 +50,7 @@ class User {
     static async register(credentials) {
         const requiredFields = ['email', 'password', 'firstName', 'lastName'];
         requiredFields.forEach(field => {
-            if (!credentials.hasOwnProperty(field)) {
+            if (!credentials.hasOwnProperty(field) || credentials[field].length <= 0) {
                 throw new BadRequestError(`Missing ${field}!`)
             }
         })

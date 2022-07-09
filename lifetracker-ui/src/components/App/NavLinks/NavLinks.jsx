@@ -21,14 +21,14 @@ export default function NavLinks(props) {
             {(!props?.user?.email ? 
                 <NavLink 
                     className=
-                        {isActive => 'nav-link' + (!isActive ? ' unselected' : '')} to='/login'>Login</NavLink>
+                        {isActive => 'nav-link login-button' + (!isActive ? ' unselected' : '')} to='/login'>Login</NavLink>
                 : <NavLink to='/' className=
-                        {isActive => 'nav-link button-filled' + (!isActive ? ' unselected' : '')} 
+                        {isActive => 'nav-link logout-button button-filled' + (!isActive ? ' unselected' : '')} 
                         onClick={(e) => handleOnClickLogout()}>
                             Logout
                         </NavLink>)}
             {(!props?.user?.email ? 
-                <NavLink className={isActive => 'nav-link button-filled' + (!isActive ? ' unselected' : '')} 
+                <NavLink className={isActive => 'nav-link button-filled register-button' + (!isActive ? ' unselected' : '')} 
                 to='/register'>
                     Sign Up
                 </NavLink> : null)}

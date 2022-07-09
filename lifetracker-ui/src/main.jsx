@@ -2,7 +2,7 @@ import React from "react"
 import ReactDOM from "react-dom"
 import { App } from "components"
 import "./globals.css"
-import { AuthProvider } from './contexts/AuthProvider';
+import { AuthProvider } from './contexts/auth';
 import { NutritionContextProvider } from "./contexts/nutrition"
 import { ActivityContextProvider } from "./contexts/activity";
 import { ExerciseContextProvider } from "./contexts/exercise";

@@ -1,7 +1,7 @@
 import Loading from "components/App/Loading/Loading";
 import { createContext, useContext, useEffect, useState } from "react"
 import apiClient from "../services/apiClient";
-import AuthContext from './AuthProvider';
+import AuthContext from './auth';
 import ExerciseContext from "./exercise";
 import NutritionContext from "./nutrition";
 

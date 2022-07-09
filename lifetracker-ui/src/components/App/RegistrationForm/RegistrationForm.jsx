@@ -2,7 +2,7 @@ import './RegistrationForm.css';
 import * as React from 'react';
 import { Link, Navigate, useNavigate } from 'react-router-dom';
 
-import AuthContext from '../../../contexts/AuthProvider';
+import AuthContext from '../../../contexts/auth';
 import apiClient from '../../../services/apiClient'
 
 export default function RegistrationForm(props) {
@@ -35,6 +35,12 @@ export default function RegistrationForm(props) {
     }
 
     const handleOnSubmit = async () => {
+        // if passwords do not match, return before doing request
+        if(registrationForm.password !== registrationForm.passwordConfirm) {
+            props.setErrorMessage("Passwords do not match!")
+            return 0;
+        }
+        // create request
         const { data, error } = await apiClient.signupUser(registrationForm);
         if (error) props.setErrorMessage(error)
         if (data?.user) {

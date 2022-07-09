@@ -1,4 +1,4 @@
-import AuthContext from "./AuthProvider";
+import AuthContext from "./auth";
 
 import React, { createContext, useContext, useState } from "react";
 import apiClient from "../services/apiClient";

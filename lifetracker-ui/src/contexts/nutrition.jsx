@@ -1,6 +1,6 @@
 import * as React from 'react';
 import apiClient from '../services/apiClient';
-import AuthContext from './AuthProvider';
+import AuthContext from './auth';
 
 const NutritionContext = React.createContext({});
 

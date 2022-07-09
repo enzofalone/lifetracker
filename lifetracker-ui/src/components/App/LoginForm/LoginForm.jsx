@@ -2,8 +2,8 @@ import './LoginForm.css'
 
 import * as React from 'react';
 import { Link, Navigate } from 'react-router-dom';
-import AuthContext from '../../../contexts/AuthProvider';
-import apiClient from '../../../services/apiClient'
+import AuthContext from '../../../contexts/auth';
+import apiClient from '../../../services/apiClient';
 
 export default function LoginForm(props) {
     // useContext hook
@@ -47,9 +47,9 @@ export default function LoginForm(props) {
             <h1>Login</h1>
             <p style={{ color: 'red' }}>{props?.errorMessage}</p>
             <label htmlFor='email'>Email</label>
-            <input name='email' placeholder='John@Doe.io' value={loginForm.email} onChange={onFormChange} required type='email' />
+            <input className='form-input' name='email' placeholder='John@Doe.io' value={loginForm.email} onChange={onFormChange} required type='email' />
             <label htmlFor='password'>Password</label>
-            <input name='password' placeholder='Password' value={loginForm.password} onChange={onFormChange} required type='password' />
+            <input className='form-input' name='password' placeholder='Password' value={loginForm.password} onChange={onFormChange} required type='password' />
 
             <button onClick={(e) => handleOnSubmit()} className='submit-login form-button'>Login</button>
             <p>New to LifeTracker? <Link to='/register'>Sign Up</Link></p>

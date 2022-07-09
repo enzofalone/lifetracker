@@ -1,7 +1,7 @@
 // modules
 import * as React from "react"
 import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom"
-import AuthContext from '../../contexts/AuthProvider'
+import AuthContext from '../../contexts/auth'
 import { API_BASE_URL } from "../../constants";
 import apiClient from "../../services/apiClient"
 import NutritionContext from "../../contexts/nutrition";

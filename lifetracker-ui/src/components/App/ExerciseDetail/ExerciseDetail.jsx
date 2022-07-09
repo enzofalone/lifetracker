@@ -1,4 +1,4 @@
-import AuthContext from "../../../contexts/AuthProvider";
+import AuthContext from "../../../contexts/auth";
 import { useContext, useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import apiClient from "../../../services/apiClient";
